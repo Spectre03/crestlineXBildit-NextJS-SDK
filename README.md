@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Crestline Commerce — BILDIT VEE Web Integration (Next.js POC)
+
+This repository contains the Next.js App Router storefront integration for the **Crestline Commerce** BILDIT Visual Experience Engine (VEE) Partner POC.
+
+## Overview
+
+The storefront is integrated with the BILDIT VEE Web SDK to support no-developer visual content scheduling. It includes:
+* **SDK Integration:** Configured with `@bildit-platform/nextjs` (UI elements) and `@bildit-platform/nextjs-api` (Remote API data connector).
+* **Live Editor Script Bridge:** Custom iframe bridge script in the root layout to handle handshakes (`IFRAME_READY` and `SCRIPT_INJECTED`) and inject the editor script dynamically.
+* **Component Library Templates:** 4 luxury storefront components configured with JSDoc tags for the BILDIT in-browser template compiler.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### 1. Environment Configuration
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Create a `.env.local` file in the root directory:
+
+```env
+BILDIT_API_KEY=592c3334-7356-4876-8ffb-906d67619d67
+BILDIT_API_URL=https://bildit-pocobaid.web.app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Development Execution
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Install the dependencies:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+```
 
-## Learn More
+Run the development server on port **3001** (as configured in the BILDIT Host Configuration):
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run dev -- -p 3001
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open [http://localhost:3001](http://localhost:3001) in your browser to view the storefront.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Integration Details
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Slot Mappings
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The homepage (`src/app/page.tsx`) contains the following four `<SlotPlaceholder>` locations:
+1. `home-hero` (mapped to `CmsCinematicHero` template)
+2. `home-marquee` (mapped to `CmsMarqueeTicker` template)
+3. `home-split-banner` (mapped to `CmsSplitBanner` template)
+4. `home-full-width-feature` (mapped to `CmsFullWidthFeature` template)
+
+### Custom Templates
+
+Registered components are located under `/src/components`:
+* `CmsCinematicHero` - Cinematic showcase slider.
+* `CmsMarqueeTicker` - Auto-scrolling marquee announcement ticker.
+* `CmsSplitBanner` - Two-column promotional grid.
+* `CmsFullWidthFeature` - Parallax full-width hero feature.
