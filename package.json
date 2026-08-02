@@ -1,0 +1,46 @@
+{
+  "name": "crestline-commerce-nextjs-bildit",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@babel/core": "^8.0.1",
+    "@babel/generator": "^8.0.0",
+    "@babel/parser": "^8.0.4",
+    "@babel/preset-env": "^8.0.2",
+    "@babel/preset-react": "^8.0.1",
+    "@babel/traverse": "^8.0.4",
+    "@babel/types": "^8.0.4",
+    "@bildit-platform/nextjs": "^0.6.2",
+    "@bildit-platform/nextjs-api": "^0.5.2",
+    "axios": "^1.18.1",
+    "chalk": "^5.6.2",
+    "commander": "^15.0.0",
+    "form-data": "^4.0.6",
+    "inquirer": "^14.0.2",
+    "keytar": "^7.9.0",
+    "next": "16.2.11",
+    "open": "^11.0.0",
+    "ora": "^9.4.1",
+    "postcss": "^8.5.23",
+    "postcss-selector-parser": "^7.1.4",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@bildit-platform/bild-cli": "^2.0.0-alpha.13",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.11",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
