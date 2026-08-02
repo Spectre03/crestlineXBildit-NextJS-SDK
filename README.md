@@ -18,8 +18,8 @@ The storefront is integrated with the BILDIT VEE Web SDK to support no-developer
 Create a `.env.local` file in the root directory:
 
 ```env
-BILDIT_API_KEY=592c3334-7356-4876-8ffb-906d67619d67
-BILDIT_API_URL=https://bildit-pocobaid.web.app
+BILDIT_API_KEY=your-bildit-api-key-here
+BILDIT_API_URL=https://your-sandbox-instance.web.app
 ```
 
 ### 2. Development Execution
