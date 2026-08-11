@@ -92,7 +92,7 @@ export default async function RootLayout({
                 if (window.__adminScriptInjected) return;
                 window.__adminScriptInjected = true;
                 var s = document.createElement('script');
-                s.src = '/scripts/bildit-cms-script.min.js';
+                s.src = '/scripts/admin.js';
                 s.onload = function () {
                   window.parent.postMessage({ type: 'SCRIPT_INJECTED', success: true }, '*');
                 };
