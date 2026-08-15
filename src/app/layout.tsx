@@ -8,6 +8,7 @@ import { RemoteConnector } from '@bildit-platform/nextjs-api'
 import Providers from '@/app/components/Providers'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import StyledComponentsRegistry from '@/lib/registry'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,7 +59,13 @@ async function getInitialData() {
         tomorrow: true,
         source: 'live',
       })
-      .catch(() => null);
+      .catch((err) => {
+        console.error("DIAGNOSTIC BILDIT ERROR:", err?.message || err);
+        if (err?.response?.data) {
+          console.error("DIAGNOSTIC BILDIT DATA:", err.response.data);
+        }
+        return null;
+      });
 
     console.error = originalConsoleError;
 
@@ -122,11 +129,13 @@ export default async function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-white">
-        <Providers banners={banners}>
-          <Header />
-          <div className="flex-1 w-full flex flex-col">{children}</div>
-          <Footer />
-        </Providers>
+        <StyledComponentsRegistry>
+          <Providers banners={banners}>
+            <Header />
+            <div className="flex-1 w-full flex flex-col">{children}</div>
+            <Footer />
+          </Providers>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
