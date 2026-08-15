@@ -111,12 +111,12 @@ export default async function RootLayout({
 
               window.parent.postMessage({ type: 'IFRAME_READY', success: true }, '*');
 
-              // Auto-load script if inside BILDIT Live Editor iframe
+              // Load editor script only after full page load/hydration is complete
               if (window.self !== window.top) {
-                if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                if (document.readyState === 'complete') {
                   loadEditorScript();
                 } else {
-                  window.addEventListener('DOMContentLoaded', loadEditorScript);
+                  window.addEventListener('load', loadEditorScript);
                 }
               }
 
